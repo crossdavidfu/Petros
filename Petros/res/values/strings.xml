@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">磐石圣经</string>
+    <string name="action_settings">设置</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="left_sign">&lt;</string>
+    <string name="right_sign">&gt;</string>
+    <string name="start_sign">&gt;</string>
+    <string name="pause_sign">||</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="next_verse">下一条金句</string>
+    <string name="mark_title">请输入书签标题</string>
+    <string name="mark_content">请输入笔记内容</string>
+    <string name="bible_verse">圣经金句</string>
+    <string name="share_verse">分享金句</string>
+    <string name="last_mark">最新书签</string>
+    <string name="last_read">上次阅读</string>
+    <string name="today_qt">今日QT</string>
+    <string name="refresh">刷新</string>
+    <string name="close">关闭</string>
+    <string name="main_page">首页</string>    
+    <string name="search_hint">多个关键词用空格隔开</string>    
+    <string name="search">搜索</string> 
+    <string name="user_center">用户中心</string>  
+    <string name="share_settings">分享设置</string>
+    <string name="read_settings">阅读设置</string>
+    <string name="about">关于</string>
+    <string name="feedback">用户反馈</string>
+    <string name="font_size">字号选择</string>
+    <string name="always_bright">阅读时背景灯常亮</string>
+    <string name="theme_black">深色主题</string>
+    <string name="show_color">含书签经文高亮显示</string>
+    <string name="auto_update">自动检测更新</string>
+    <string name="allow_gprs">使用数据流量</string>
+    <string name="mp3_ver">圣经mp3版本选择</string>
+    <string name="backup_settings">备份还原</string>
+    <string name="backup">备份数据</string>
+    <string name="restore">还原数据</string>
+    <string name="bible_version">圣经版本</string>
+    <string name="bible_version_0">和合本</string>
+    <string name="bible_version_1">新译本</string>
+    <string name="bible_version_2">现代中文译本</string>
+    <string name="bible_version_3">New International Version</string>
+    <string name="bible_version_4">New Revised Standard Version</string>
+    <string name="bible_version_5">King James Version</string>
+    <string name="notice">提醒：本软件即将停止更新，请至各大应用市场下载《读圣经》软件。</string>
+
+</resources>

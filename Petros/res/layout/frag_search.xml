@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal" >
+        
+        <EditText
+            android:id="@+id/text_frag_search_word"
+            android:layout_height="@dimen/default_button_height"    
+            android:layout_width="wrap_content"
+            android:layout_weight="1"   
+            android:ems="10"
+            android:hint="@string/search_hint" />
+        
+        <Button
+            android:id="@+id/button_frag_search_click"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_weight="0"  
+            android:text="@string/search" />            
+        
+    </LinearLayout>    
+    
+    <TextView
+        android:id="@+id/text_frag_search_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_vertical_margin"
+        android:textSize="@dimen/default_font_size" />
+        
+    <ListView
+            android:id="@+id/list_frag_search_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+</LinearLayout>

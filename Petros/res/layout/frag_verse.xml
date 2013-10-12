@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        
+        <Button
+            android:id="@+id/button_verse_next"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/default_button_height"
+            android:text="@string/next_verse" />
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/text_verse_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/ultra_large_margin"
+        android:layout_marginTop="@dimen/extra_large_margin"
+        android:gravity="center_vertical"
+        android:padding="@dimen/default_margin"
+        android:textSize="@dimen/extra_large_font_size" />
+
+</LinearLayout>

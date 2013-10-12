@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >                
+        <Button
+            android:id="@+id/button_act_mark_content_delete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_weight="1"
+            android:text="@string/delete" />    
+        
+        <Button
+            android:id="@+id/button_act_mark_content_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_weight="1"
+            android:text="@string/cancel" />    
+        
+        <Button
+            android:id="@+id/button_act_mark_content_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_weight="1"
+            android:text="@string/confirm" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/text_act_mark_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_button_height"
+        android:layout_weight="0"     
+        android:ems="10"
+        android:hint="@string/mark_title" >
+    </EditText>
+    
+    <EditText
+        android:id="@+id/text_act_mark_content_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:ems="10"
+        android:gravity="top|left"
+        android:hint="@string/mark_content"
+        android:inputType="textMultiLine"  >        
+    </EditText>
+    
+</LinearLayout>

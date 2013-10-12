@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <PreferenceCategory 
+        android:key="read_settings"
+        android:title="@string/user_center" >
+        
+        <PreferenceScreen 
+            android:key="click_about"
+            android:title="@string/about"
+            android:summary="软件版本：1.6" />              
+        <PreferenceScreen 
+            android:key="click_feedback"
+            android:title="@string/feedback" 
+            android:summary="提交软件错误反馈或建议" />             
+        <PreferenceScreen 
+            android:key="click_share"
+            android:title="@string/share_settings" 
+            android:summary="分享到微博、空间设置" />   
+        <CheckBoxPreference  
+            android:key="auto_update"
+            android:title="@string/auto_update" 
+            android:summaryOn="打开自动检测更新"
+            android:summaryOff="关闭自动检测更新"
+            android:defaultValue="true" 
+            android:enabled="true"/>
+        <CheckBoxPreference  
+            android:key="allow_gprs"
+            android:title="@string/allow_gprs" 
+            android:summaryOn="允许使用数据流量"
+            android:summaryOff="不允许使用数据流量"
+            android:defaultValue="false" 
+            android:enabled="true"/>          
+    </PreferenceCategory>
+      
+    <PreferenceCategory 
+        android:key="read_settings"
+        android:title="@string/read_settings" >            
+        <ListPreference             
+            android:key="font_size"
+            android:title="@string/font_size"
+            android:summary="选择合适的阅读字号"
+            android:defaultValue="18" 
+            android:entryValues="@array/font_size_value" 
+            android:entries="@array/font_size_entry" 
+            android:dialogTitle="选择字号"/>
+        <ListPreference 
+            android:key="mp3_ver"
+            android:title="@string/mp3_ver"
+            android:summary="选择需要的圣经版本"
+            android:defaultValue="1" 
+            android:entryValues="@array/mp3_ver_value" 
+            android:entries="@array/mp3_ver_entry" 
+            android:dialogTitle="选择圣经mp3版本"/>
+        <CheckBoxPreference  
+            android:key="always_bright"
+            android:title="@string/always_bright" 
+            android:summaryOn="背景灯常亮"
+            android:summaryOff="背景灯随系统控制"
+            android:defaultValue="false" 
+            android:enabled="true"/>
+        <CheckBoxPreference  
+            android:key="theme_black"
+            android:title="@string/theme_black" 
+            android:summaryOn="使用深色主题"
+            android:summaryOff="使用浅色主题"
+            android:defaultValue="false" 
+            android:enabled="true"/>
+        <CheckBoxPreference  
+            android:key="show_color"
+            android:title="@string/show_color" 
+            android:summaryOn="高亮显示"
+            android:summaryOff="不高亮显示"
+            android:defaultValue="true" 
+            android:enabled="true"/>
+    </PreferenceCategory>
+   
+    <PreferenceCategory 
+        android:key="bible_version"
+        android:title="@string/bible_version" >
+        <CheckBoxPreference  
+            android:key="bible_version_0"
+            android:title="@string/bible_version_0" 
+            android:defaultValue="true" 
+            android:summaryOn="显示NUV译本"
+            android:summaryOff="不显示NUV译本"/>
+
+        <CheckBoxPreference  
+            android:key="bible_version_1"
+            android:title="@string/bible_version_1"             
+            android:defaultValue="false"
+            android:summaryOn="显示NCB译本"
+            android:summaryOff="不显示NCB译本"/>        
+
+        <CheckBoxPreference  
+            android:key="bible_version_2"
+            android:title="@string/bible_version_2" 
+            android:defaultValue="false" 
+            android:summaryOn="显示TCB译本"
+            android:summaryOff="不显示TCB译本"/>
+
+        <CheckBoxPreference 
+            android:key="bible_version_3" 
+            android:title="@string/bible_version_3" 
+            android:defaultValue="true"
+            android:summaryOn="显示NIV译本"
+            android:summaryOff="不显示NIV译本"/>
+        
+        <CheckBoxPreference 
+            android:key="bible_version_4" 
+            android:title="@string/bible_version_4" 
+            android:defaultValue="false"
+            android:summaryOn="显示NRSV译本"
+            android:summaryOff="不显示NRSV译本"/>
+        
+        <CheckBoxPreference 
+            android:key="bible_version_5" 
+			android:title="@string/bible_version_5" 
+            android:defaultValue="false"
+            android:summaryOn="显示KJV译本"
+            android:summaryOff="不显示KJV译本"/> 
+            
+    </PreferenceCategory>    
+</PreferenceScreen>
