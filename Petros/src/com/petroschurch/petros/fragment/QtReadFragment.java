@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,14 +31,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
+import com.petroschurch.petros.activity.MarkContentActivity;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 import com.umeng.socialize.controller.UMServiceFactory;
 
 @SuppressWarnings("deprecation")
-public class Frag_Qt_Read extends SherlockFragment implements OnItemClickListener, OnItemLongClickListener
+public class QtReadFragment extends SherlockFragment implements OnItemClickListener, OnItemLongClickListener
 {
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     
     public ListView list_content;
     public Button button_date;
@@ -58,7 +61,7 @@ public class Frag_Qt_Read extends SherlockFragment implements OnItemClickListene
     {
         super.onCreate(savedInstanceState);
         //  setRetainInstance(true);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
     }
     
     @SuppressLint("HandlerLeak")
@@ -126,7 +129,7 @@ public class Frag_Qt_Read extends SherlockFragment implements OnItemClickListene
         intent.putExtra("book", Integer.parseInt(map.get("book").toString()));
         intent.putExtra("chapter", Integer.parseInt(map.get("chapter").toString()));
         intent.putExtra("section", Integer.parseInt(map.get("section").toString()));
-        intent.setClass(mActivity, Act_Mark_Content.class);
+        intent.setClass(mActivity, MarkContentActivity.class);
         startActivity(intent);    
     }
       
@@ -188,7 +191,7 @@ public class Frag_Qt_Read extends SherlockFragment implements OnItemClickListene
                     intent.putExtra("book", Integer.parseInt(map.get("book").toString()));
                     intent.putExtra("chapter", Integer.parseInt(map.get("chapter").toString()));
                     intent.putExtra("section", Integer.parseInt(map.get("section").toString()));
-                    intent.setClass(mActivity, Act_Mark_Content.class);
+                    intent.setClass(mActivity, MarkContentActivity.class);
                     startActivity(intent);     
                     break;
                 case CommonPara.VERSE_CHOISE_COPY:

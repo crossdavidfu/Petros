@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.adapter;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Adap_Qt extends FragmentPagerAdapter 
+import com.petroschurch.petros.fragment.QtDevoteFragment;
+import com.petroschurch.petros.fragment.QtReadFragment;
+
+public class QtAdapter extends FragmentPagerAdapter
 {
     public final static int TAB_QT_READ = 0; 
     public final static int TAB_QT_DEVOTE = 1; 
@@ -19,15 +22,15 @@ public class Adap_Qt extends FragmentPagerAdapter
     private FragmentManager mManager = null;
     
     private ArrayList<Fragment> mFragmentList = new ArrayList<Fragment>(2);
-    private Frag_Qt_Read qt_read = null;
-    private Frag_Qt_Devote qt_devote = null;
+    private QtReadFragment qt_read = null;
+    private QtDevoteFragment qt_devote = null;
     
-    public Adap_Qt(FragmentManager fm) 
+    public QtAdapter(FragmentManager fm)
     { 
         super(fm);
         mManager = fm;
-        qt_read = new Frag_Qt_Read();
-        qt_devote = new Frag_Qt_Devote();
+        qt_read = new QtReadFragment();
+        qt_devote = new QtDevoteFragment();
         mFragmentList.add(TAB_QT_READ, qt_read);
         mFragmentList.add(TAB_QT_DEVOTE, qt_devote);        
     }
@@ -101,7 +104,7 @@ public class Adap_Qt extends FragmentPagerAdapter
         if(((Fragment)object) == mFragmentList.get(TAB_QT_DEVOTE))
         {
             mFragmentList.remove(TAB_QT_DEVOTE);
-            qt_devote = new Frag_Qt_Devote();
+            qt_devote = new QtDevoteFragment();
             mFragmentList.add(TAB_QT_DEVOTE, qt_devote);
             return POSITION_NONE;
         }

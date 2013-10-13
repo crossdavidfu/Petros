@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,13 +21,15 @@ import android.widget.SimpleAdapter;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class Frag_Mark extends SherlockFragment implements OnItemClickListener
+public class MarkFragment extends SherlockFragment implements OnItemClickListener
 {
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
     private ListView list_content;
@@ -41,7 +43,7 @@ public class Frag_Mark extends SherlockFragment implements OnItemClickListener
     public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
     }
@@ -105,7 +107,7 @@ public class Frag_Mark extends SherlockFragment implements OnItemClickListener
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         fragTrans = mManager.beginTransaction();                    
-        fragTrans.replace(R.id.frag_content_frame, new Frag_Bible());                    
+        fragTrans.replace(R.id.frag_content_frame, new BibleFragment());
         fragTrans.commit(); 
     }
     

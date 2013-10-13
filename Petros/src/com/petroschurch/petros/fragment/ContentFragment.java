@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,8 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.R;
 
-public class Frag_Content extends SherlockFragment 
+public class ContentFragment extends SherlockFragment
 {
 	@Override
     public void onCreate(Bundle savedInstanceState)

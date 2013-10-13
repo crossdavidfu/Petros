@@ -23,7 +23,7 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Sherlock.Light" >
         <activity
-            android:name=".Act_Main"
+            android:name=".MainActivity"
             android:label="@string/app_name" 
             android:configChanges="orientation|keyboardHidden|screenSize" >
             <intent-filter>
@@ -31,10 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Act_Book_Select" />
-        <activity android:name=".Act_Chapter_Select" />
-        <activity android:name=".Act_Mark_Content" />
-        <activity android:name=".Act_Setting" />
+        <activity android:name=".activity.BookSelectActivity" />
+        <activity android:name=".activity.ChapterSelectActivity" />
+        <activity android:name=".activity.MarkContentActivity" />
+        <activity android:name=".activity.SettingActivity" />
         
         <activity android:name="com.umeng.fb.ConversationActivity"/>
 		<activity android:name="com.umeng.fb.ContactActivity"/>

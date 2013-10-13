@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.Random;
 
@@ -19,11 +19,13 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class Frag_Verse extends SherlockFragment implements OnClickListener
+public class VerseFragment extends SherlockFragment implements OnClickListener
 {
     private Button button_next;
     private TextView text_verse;
@@ -32,7 +34,7 @@ public class Frag_Verse extends SherlockFragment implements OnClickListener
     private int verseChapter = 0;
     private int verseSection = 0;
     
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
     private Handler handler = null;
@@ -44,7 +46,7 @@ public class Frag_Verse extends SherlockFragment implements OnClickListener
     {
         super.onCreate(savedInstanceState);
 
-        mActivity = (Act_Main)getSherlockActivity();    
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
     }
@@ -106,7 +108,7 @@ public class Frag_Verse extends SherlockFragment implements OnClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();                    
-                    fragTrans.replace(R.id.frag_content_frame, new Frag_Bible());                    
+                    fragTrans.replace(R.id.frag_content_frame, new BibleFragment());
                     fragTrans.commit();  
                 }                                  
                 break;

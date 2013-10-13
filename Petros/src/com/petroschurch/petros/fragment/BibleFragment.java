@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -13,16 +13,19 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
+import com.petroschurch.petros.adapter.BibleAdapter;
 import com.petroschurch.petros.lib.CommonPara;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class Frag_Bible extends SherlockFragment
+public class BibleFragment extends SherlockFragment
 {    
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ViewPager mViewPager = null;  
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
-    private Adap_Bible mAdapter = null;
+    private BibleAdapter mAdapter = null;
     
     private int lastBook = CommonPara.currentBook;
     private int lastChapter = CommonPara.currentChapter;
@@ -32,7 +35,7 @@ public class Frag_Bible extends SherlockFragment
     {  
         super.onCreate(savedInstanceState);
         //setRetainInstance(true);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();        
         
         // 创建Tab   
@@ -44,9 +47,9 @@ public class Frag_Bible extends SherlockFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {     
-        View view = inflater.inflate(R.layout.frag_bible, container, false); 
+        View view = inflater.inflate(R.layout.frag_bible, container, false);
         mManager = getChildFragmentManager();//mActivity.getSupportFragmentManager();
-        mAdapter = new Adap_Bible(mManager);
+        mAdapter = new BibleAdapter(mManager);
         mViewPager = (ViewPager)view.findViewById(R.id.frag_bible_pager);                
         mViewPager.setAdapter(mAdapter);  
         mViewPager.setCurrentItem(0); 
@@ -103,10 +106,10 @@ public class Frag_Bible extends SherlockFragment
             mActionBar.setSelectedNavigationItem(arg0);
             switch (arg0) 
             {
-                case Adap_Bible.TAB_BIBLE_READ:
+                case BibleAdapter.TAB_BIBLE_READ:
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     break;
-                case Adap_Bible.TAB_BIBLE_DEVOTE:
+                case BibleAdapter.TAB_BIBLE_DEVOTE:
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
                     if((lastBook != CommonPara.currentBook) || (lastChapter != CommonPara.currentChapter))
                     { 

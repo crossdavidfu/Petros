@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,15 +35,20 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
+import com.petroschurch.petros.activity.BookSelectActivity;
+import com.petroschurch.petros.activity.ChapterSelectActivity;
+import com.petroschurch.petros.activity.MarkContentActivity;
 import com.petroschurch.petros.lib.*;
 import com.petroschurch.petros.lib.ProgressShow.ProgressCallBack;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.actionbarsherlock.app.SherlockFragment;
 
 @SuppressWarnings("deprecation")
-public class Frag_Bible_Read extends SherlockFragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener ,OnSeekBarChangeListener
+public class BibleReadFragment extends SherlockFragment implements OnClickListener, OnItemClickListener, OnItemLongClickListener ,OnSeekBarChangeListener
 {
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     
     private ListView list_content;
     private Button button_book;
@@ -74,7 +79,7 @@ public class Frag_Bible_Read extends SherlockFragment implements OnClickListener
     {
 	    super.onCreate(savedInstanceState);
         //  setRetainInstance(true);
-	    mActivity = (Act_Main)getSherlockActivity();
+	    mActivity = (MainActivity)getSherlockActivity();
     }
 
 	@SuppressLint("HandlerLeak")
@@ -181,11 +186,11 @@ public class Frag_Bible_Read extends SherlockFragment implements OnClickListener
         switch (v.getId())
         {
             case R.id.button_bible_read_book:
-                intent.setClass(mActivity, Act_Book_Select.class);
+                intent.setClass(mActivity, BookSelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button_bible_read_chapter:
-                intent.setClass(mActivity, Act_Chapter_Select.class);
+                intent.setClass(mActivity, ChapterSelectActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button_bible_read_left:
@@ -235,7 +240,7 @@ public class Frag_Bible_Read extends SherlockFragment implements OnClickListener
                     intent.putExtra("book", Integer.parseInt(map.get("book").toString()));
                     intent.putExtra("chapter", Integer.parseInt(map.get("chapter").toString()));
                     intent.putExtra("section", Integer.parseInt(map.get("section").toString()));
-                    intent.setClass(mActivity, Act_Mark_Content.class);
+                    intent.setClass(mActivity, MarkContentActivity.class);
                     startActivity(intent);     
                     break;
                 case CommonPara.VERSE_CHOISE_COPY:
@@ -262,7 +267,7 @@ public class Frag_Bible_Read extends SherlockFragment implements OnClickListener
         intent.putExtra("book", Integer.parseInt(map.get("book").toString()));
         intent.putExtra("chapter", Integer.parseInt(map.get("chapter").toString()));
         intent.putExtra("section", Integer.parseInt(map.get("section").toString()));
-        intent.setClass(mActivity, Act_Mark_Content.class);
+        intent.setClass(mActivity, MarkContentActivity.class);
         startActivity(intent);     
     }
           

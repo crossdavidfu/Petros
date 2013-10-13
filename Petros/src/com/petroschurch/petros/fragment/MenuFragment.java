@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,12 +19,15 @@ import android.widget.SimpleAdapter;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
+import com.petroschurch.petros.activity.SettingActivity;
 import com.petroschurch.petros.lib.CommonPara;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class Frag_Menu extends SherlockFragment implements OnItemClickListener
+public class MenuFragment extends SherlockFragment implements OnItemClickListener
 {
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
     private Fragment fragment = null;
@@ -37,7 +40,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
 	{
         super.onCreate(savedInstanceState);
         //setRetainInstance(true);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
         CommonPara.menuIndex = CommonPara.MENU_HOME;
@@ -81,7 +84,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
 					mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 					FragmentTransaction fragTrans = mManager.beginTransaction();
-					fragment = new Frag_Home();
+					fragment = new HomeFragment();
 			        fragTrans.replace(R.id.frag_content_frame, fragment);	
 			        fragTrans.commit();	
 				}				
@@ -93,7 +96,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction(); 
-                    fragment = new Frag_Bible();
+                    fragment = new BibleFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);                    
                     fragTrans.commit();                    
                 }               
@@ -105,7 +108,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction(); 
-                    fragment = new Frag_Qt();
+                    fragment = new QtFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);                    
                     fragTrans.commit();                    
                 }               
@@ -117,7 +120,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
-                    fragment = new Frag_Mark();
+                    fragment = new MarkFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);   
                     fragTrans.commit(); 
                 }               
@@ -129,7 +132,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
-                    fragment = new Frag_Book();
+                    fragment = new BookFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);   
                     fragTrans.commit(); 
                 }               
@@ -141,7 +144,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
-                    fragment = new Frag_Verse();
+                    fragment = new VerseFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);   
                     fragTrans.commit(); 
                 }               
@@ -153,7 +156,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
-                    fragment = new Frag_Search();
+                    fragment = new SearchFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);   
                     fragTrans.commit(); 
                 }               
@@ -165,7 +168,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     FragmentTransaction fragTrans = mManager.beginTransaction();
-                    fragment = new Frag_Site();
+                    fragment = new SiteFragment();
                     fragTrans.replace(R.id.frag_content_frame, fragment);   
                     fragTrans.commit(); 
                 }               
@@ -173,7 +176,7 @@ public class Frag_Menu extends SherlockFragment implements OnItemClickListener
 			case CommonPara.MENU_SET:
 			    Intent intent;
 		        intent = new Intent();
-		        intent.setClass(mActivity, Act_Setting.class);
+		        intent.setClass(mActivity, SettingActivity.class);
                 startActivityForResult(intent, INTENT_SET);
                 break;
 		}

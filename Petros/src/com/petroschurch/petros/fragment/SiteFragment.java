@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,9 +12,10 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 
-public class Frag_Site extends SherlockFragment implements OnClickListener
+public class SiteFragment extends SherlockFragment implements OnClickListener
 {
     WebView web_forum;
     

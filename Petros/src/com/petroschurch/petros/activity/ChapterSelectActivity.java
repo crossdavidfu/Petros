@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +14,11 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 
-public class Act_Chapter_Select extends SherlockActivity implements OnItemClickListener
+public class ChapterSelectActivity extends SherlockActivity implements OnItemClickListener
 {        
     GridView grid_chapter;
     

@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.adapter;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Adap_Bible extends FragmentPagerAdapter  
+import com.petroschurch.petros.fragment.BibleDevoteFragment;
+import com.petroschurch.petros.fragment.BibleReadFragment;
+
+public class BibleAdapter extends FragmentPagerAdapter
 {
     public final static int TAB_BIBLE_READ = 0; 
     public final static int TAB_BIBLE_DEVOTE = 1; 
@@ -19,15 +22,15 @@ public class Adap_Bible extends FragmentPagerAdapter
     private FragmentManager mManager = null;
     
     private ArrayList<Fragment> mFragmentList = new ArrayList<Fragment>(2);
-    private Frag_Bible_Read bible_read = null;
-    private Frag_Bible_Devote bible_devote = null;
+    private BibleReadFragment bible_read = null;
+    private BibleDevoteFragment bible_devote = null;
     
-    public Adap_Bible(FragmentManager fm) 
+    public BibleAdapter(FragmentManager fm)
     { 
         super(fm);
         mManager = fm;
-        bible_read = new Frag_Bible_Read();
-        bible_devote = new Frag_Bible_Devote();
+        bible_read = new BibleReadFragment();
+        bible_devote = new BibleDevoteFragment();
         mFragmentList.add(TAB_BIBLE_READ, bible_read);
         mFragmentList.add(TAB_BIBLE_DEVOTE, bible_devote);        
     }
@@ -101,7 +104,7 @@ public class Adap_Bible extends FragmentPagerAdapter
         if(((Fragment)object) == mFragmentList.get(TAB_BIBLE_DEVOTE))
         {
             mFragmentList.remove(TAB_BIBLE_DEVOTE);
-            bible_devote = new Frag_Bible_Devote();
+            bible_devote = new BibleDevoteFragment();
             mFragmentList.add(TAB_BIBLE_DEVOTE, bible_devote);
             return POSITION_NONE;
         }

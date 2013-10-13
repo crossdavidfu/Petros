@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,11 +18,13 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.*;
 
-public class Frag_Bible_Devote extends SherlockFragment
+public class BibleDevoteFragment extends SherlockFragment
 {
-    private Act_Main mActivity = null;    
+    private MainActivity mActivity = null;
     private ListView list_content;
     private Message msg = null;
     private Handler handler = null;    
@@ -33,7 +35,7 @@ public class Frag_Bible_Devote extends SherlockFragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
     }
 
     @SuppressLint("HandlerLeak")

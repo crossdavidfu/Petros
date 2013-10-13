@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,12 +25,14 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 
-public class Frag_Book extends SherlockFragment implements OnClickListener
+public class BookFragment extends SherlockFragment implements OnClickListener
 {
-    private Act_Main mActivity = null;    
+    private MainActivity mActivity = null;
     private ListView list_content;
     public Button button_date;
     public Button button_type;
@@ -43,7 +45,7 @@ public class Frag_Book extends SherlockFragment implements OnClickListener
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
     }
 
     @SuppressLint("HandlerLeak")

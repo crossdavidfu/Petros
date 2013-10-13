@@ -1,6 +1,8 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.activity;
 
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.*;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.socialize.controller.RequestType;
@@ -16,7 +18,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 
-public class Act_Setting extends SherlockPreferenceActivity implements OnPreferenceChangeListener
+public class SettingActivity extends SherlockPreferenceActivity implements OnPreferenceChangeListener
 {
     private PreferenceScreen click_about;
     private PreferenceScreen click_share;
@@ -44,7 +46,7 @@ public class Act_Setting extends SherlockPreferenceActivity implements OnPrefere
         
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         
-        intent = new Intent(this, Act_Main.class);  
+        intent = new Intent(this, MainActivity.class);
         setResult(CommonPara.NOT_NEED_RESTART, intent);
 
         for(int i=0;i<CommonPara.VERSION_NUMBER;i++)

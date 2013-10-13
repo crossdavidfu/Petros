@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.Random;
 
@@ -18,15 +18,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.*;
 import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
 
-public class Frag_Home extends SherlockFragment implements OnClickListener
+public class HomeFragment extends SherlockFragment implements OnClickListener
 {
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
     
@@ -61,7 +63,7 @@ public class Frag_Home extends SherlockFragment implements OnClickListener
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         
-        mActivity = (Act_Main)getSherlockActivity();    
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();
     }
@@ -165,7 +167,7 @@ public class Frag_Home extends SherlockFragment implements OnClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();                    
-                    fragTrans.replace(R.id.frag_content_frame, new Frag_Bible());                    
+                    fragTrans.replace(R.id.frag_content_frame, new BibleFragment());
                     fragTrans.commit();  
                 }                                  
                 break;
@@ -181,7 +183,7 @@ public class Frag_Home extends SherlockFragment implements OnClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();                    
-                    fragTrans.replace(R.id.frag_content_frame, new Frag_Bible());                    
+                    fragTrans.replace(R.id.frag_content_frame, new BibleFragment());
                     fragTrans.commit();     
                 }
                 break;
@@ -197,7 +199,7 @@ public class Frag_Home extends SherlockFragment implements OnClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();                    
-                    fragTrans.replace(R.id.frag_content_frame, new Frag_Bible());                    
+                    fragTrans.replace(R.id.frag_content_frame, new BibleFragment());
                     fragTrans.commit();     
                 }
                 break;
@@ -213,7 +215,7 @@ public class Frag_Home extends SherlockFragment implements OnClickListener
                     mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     fragTrans = mManager.beginTransaction();                    
-                    fragTrans.replace(R.id.frag_content_frame, new Frag_Qt());                    
+                    fragTrans.replace(R.id.frag_content_frame, new QtFragment());
                     fragTrans.commit();     
                 }
                 break;

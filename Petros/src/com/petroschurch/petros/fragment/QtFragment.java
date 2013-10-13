@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -13,16 +13,19 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
+import com.petroschurch.petros.adapter.QtAdapter;
 import com.petroschurch.petros.lib.CommonPara;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class Frag_Qt extends SherlockFragment
+public class QtFragment extends SherlockFragment
 {    
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ViewPager mViewPager = null;  
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
-    private Adap_Qt mAdapter = null;
+    private QtAdapter mAdapter = null;
     
     private int lastYear = CommonPara.currentYear;
     private int lastMonth = CommonPara.currentMonth;
@@ -33,7 +36,7 @@ public class Frag_Qt extends SherlockFragment
     {  
         super.onCreate(savedInstanceState);
         //setRetainInstance(true);
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();        
         
         // 创建Tab   
@@ -45,9 +48,9 @@ public class Frag_Qt extends SherlockFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {     
-        View view = inflater.inflate(R.layout.frag_qt, container, false); 
+        View view = inflater.inflate(R.layout.frag_qt, container, false);
         mManager = getChildFragmentManager();
-        mAdapter = new Adap_Qt(mManager);
+        mAdapter = new QtAdapter(mManager);
         mViewPager = (ViewPager)view.findViewById(R.id.frag_qt_pager);                
         mViewPager.setAdapter(mAdapter);  
         mViewPager.setCurrentItem(0); 
@@ -104,10 +107,10 @@ public class Frag_Qt extends SherlockFragment
             mActionBar.setSelectedNavigationItem(arg0);
             switch (arg0) 
             {
-                case Adap_Qt.TAB_QT_READ:
+                case QtAdapter.TAB_QT_READ:
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
                     break;
-                case Adap_Qt.TAB_QT_DEVOTE:
+                case QtAdapter.TAB_QT_DEVOTE:
                     mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
                     if((lastYear != CommonPara.currentYear) 
                     || (lastMonth != CommonPara.currentMonth)

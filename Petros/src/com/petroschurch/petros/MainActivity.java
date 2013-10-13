@@ -2,6 +2,8 @@ package com.petroschurch.petros;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
+import com.petroschurch.petros.fragment.HomeFragment;
+import com.petroschurch.petros.fragment.MenuFragment;
 import com.petroschurch.petros.lib.*;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
@@ -16,7 +18,7 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-public class Act_Main extends SlidingFragmentActivity 
+public class MainActivity extends SlidingFragmentActivity
 {
     private long exitTime = 0;
     private ActionBar mActionBar = null;
@@ -46,8 +48,8 @@ public class Act_Main extends SlidingFragmentActivity
         mActionBar = getSupportActionBar();        
         setBehindContentView(R.layout.frag_menu);        
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
-        fragTrans.replace(R.id.frag_menu_frame, new Frag_Menu());
-        fragTrans.replace(R.id.frag_content_frame,new Frag_Home());
+        fragTrans.replace(R.id.frag_menu_frame, new MenuFragment());
+        fragTrans.replace(R.id.frag_content_frame,new HomeFragment());
         fragTrans.commit();
 
         InitSlidingMenu();        

@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.activity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,10 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 
-public class Act_Mark_Content extends SherlockActivity implements OnClickListener
+public class MarkContentActivity extends SherlockActivity implements OnClickListener
 {
     EditText text_title;
     EditText text_content;

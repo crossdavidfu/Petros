@@ -1,4 +1,4 @@
-package com.petroschurch.petros;
+package com.petroschurch.petros.fragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,11 +28,13 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
+import com.petroschurch.petros.MainActivity;
+import com.petroschurch.petros.R;
 import com.petroschurch.petros.lib.CommonPara;
 import com.petroschurch.petros.lib.Database;
 import com.slidingmenu.lib.SlidingMenu;
 
-public class Frag_Search extends SherlockFragment implements OnClickListener, OnItemClickListener
+public class SearchFragment extends SherlockFragment implements OnClickListener, OnItemClickListener
 {
     private Button button_search;
     private ListView list_search;
@@ -40,7 +42,7 @@ public class Frag_Search extends SherlockFragment implements OnClickListener, On
     private TextView text_search_count;
    
     private Handler handler = null;
-    private Act_Main mActivity = null;
+    private MainActivity mActivity = null;
     private ActionBar mActionBar = null;
     private FragmentManager mManager = null;
     private Message msg = null;
@@ -55,7 +57,7 @@ public class Frag_Search extends SherlockFragment implements OnClickListener, On
     {
         super.onCreate(savedInstanceState);
         
-        mActivity = (Act_Main)getSherlockActivity();
+        mActivity = (MainActivity)getSherlockActivity();
         mActionBar = mActivity.getSupportActionBar();
         mManager = mActivity.getSupportFragmentManager();     
     }
@@ -148,7 +150,7 @@ public class Frag_Search extends SherlockFragment implements OnClickListener, On
         mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         fragTrans = mManager.beginTransaction();                    
-        fragTrans.replace(R.id.frag_content_frame, new Frag_Bible());                    
+        fragTrans.replace(R.id.frag_content_frame, new BibleFragment());
         fragTrans.commit(); 
     }
     
