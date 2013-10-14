@@ -1,6 +1,5 @@
 package com.petroschurch.petros.fragment;
 
-public class DevoteFragment
-{
+public class DevoteFragment {
 
 }

@@ -1,337 +1,264 @@
 package com.petroschurch.petros.lib;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import com.petroschurch.petros.lib.ProgressShow.ProgressCallBack;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
-public class Database
-{
+import com.petroschurch.petros.lib.ProgressShow.ProgressCallBack;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class Database {
     private Context mContext;
-    
+
     public static final int TOAST_TEXT = 0;
-    
+
     @SuppressLint("HandlerLeak")
-    public Database(Context context)
-    {
+    public Database(Context context) {
         mContext = context;
     }
-    
-    public SQLiteDatabase DbConnection(String file)
-    {
+
+    public SQLiteDatabase DbConnection(String file) {
         SQLiteDatabase db = null;
-        
-        try
-        {
-            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) 
-            {
+
+        try {
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 db = SQLiteDatabase.openOrCreateDatabase(file, null);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return db;
     }
-    
-    public boolean OpenDbCheck()
-    {
-        final boolean contentCheck = CheckDatabase(CommonPara.DB_CONTENT_PATH,CommonPara.DB_CONTENT_NAME,CommonPara.DB_CONTENT_VER);
-        final int dataVersion = CheckData(CommonPara.DB_DATA_PATH,CommonPara.DB_DATA_NAME);
-        
-        if(!contentCheck || (dataVersion != CommonPara.DB_DATA_VER))
-        {        
-            if(!contentCheck)
-            {
-                CopyBigDatabase(CommonPara.DB_CONTENT_ASSET, CommonPara.DB_CONTENT_NAME, 
-                        CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME, 
+
+    public boolean OpenDbCheck() {
+        final boolean contentCheck = CheckDatabase(CommonPara.DB_CONTENT_PATH, CommonPara.DB_CONTENT_NAME, CommonPara.DB_CONTENT_VER);
+        final int dataVersion = CheckData(CommonPara.DB_DATA_PATH, CommonPara.DB_DATA_NAME);
+
+        if (!contentCheck || (dataVersion != CommonPara.DB_DATA_VER)) {
+            if (!contentCheck) {
+                CopyBigDatabase(CommonPara.DB_CONTENT_ASSET, CommonPara.DB_CONTENT_NAME,
+                        CommonPara.DB_CONTENT_PATH + CommonPara.DB_CONTENT_NAME,
                         CommonPara.DB_CONTENT_COUNT);
             }
-            
-            if(dataVersion != CommonPara.DB_DATA_VER)
-            {
-                UpdateData(CommonPara.DB_DATA_PATH,CommonPara.DB_DATA_NAME, dataVersion);
-            } 
-            return false;            
+
+            if (dataVersion != CommonPara.DB_DATA_VER) {
+                UpdateData(CommonPara.DB_DATA_PATH, CommonPara.DB_DATA_NAME, dataVersion);
+            }
+            return false;
         }
 
         return true;
     }
-    
-    public void CopyDatabase(final String source, final String dest)
-    {
+
+    public void CopyDatabase(final String source, final String dest) {
         final ProgressShow dialog = new ProgressShow(
                 mContext, "请稍候", "数据库复制中", ProgressShow.DIALOG_TYPE_SPINNER, ProgressShow.DIALOG_DEFAULT_MAX);
-        dialog.ShowDialog(new ProgressCallBack() 
-        {  
-            public void action() 
-            {   
-                try 
-                {   
+        dialog.ShowDialog(new ProgressCallBack() {
+            public void action() {
+                try {
                     InputStream is = new FileInputStream(source);
                     OutputStream os = new FileOutputStream(dest);
-        
+
                     byte[] buffer = new byte[1024];
                     int length;
-                    while ((length = is.read(buffer)) > 0) 
-                    {
+                    while ((length = is.read(buffer)) > 0) {
                         os.write(buffer, 0, length);
                     }
-        
+
                     os.flush();
                     os.close();
                     is.close();
-                } 
-                catch (Exception e) 
-                {
-                    
-                }
-                finally
-                {
+                } catch (Exception e) {
+
+                } finally {
                     dialog.CloseDialog();
                 }
             }
         });
-    }    
-    
-    public void CopyBigDatabase(final String path, final String name, final String dest, final int count)
-    { 
+    }
+
+    public void CopyBigDatabase(final String path, final String name, final String dest, final int count) {
         final ProgressShow dialog = new ProgressShow(
                 mContext, "请稍候", "数据库复制中", ProgressShow.DIALOG_TYPE_BAR, ProgressShow.DIALOG_DEFAULT_MAX);
-        dialog.ShowDialog(new ProgressCallBack() 
-        {  
-            public void action() 
-            {   
-                try 
-                {     
+        dialog.ShowDialog(new ProgressCallBack() {
+            public void action() {
+                try {
                     InputStream is;
                     OutputStream os = new FileOutputStream(dest);
-        
-                    for (int i = 1; i <= count; i++)
-                    {
+
+                    for (int i = 1; i <= count; i++) {
                         is = mContext.getAssets().open(path + "/" + name + "." + String.format("%03d", i));
                         byte[] buffer = new byte[1024];
                         int length;
-                        while ((length = is.read(buffer)) > 0) 
-                        {
+                        while ((length = is.read(buffer)) > 0) {
                             os.write(buffer, 0, length);
                         }
-        
+
                         os.flush();
                         is.close();
-                        
-                        if(dialog.GetProgress() < ProgressShow.DIALOG_DEFAULT_MAX -1) 
-                        {
+
+                        if (dialog.GetProgress() < ProgressShow.DIALOG_DEFAULT_MAX - 1) {
                             dialog.AddProgress(ProgressShow.DIALOG_DEFAULT_INCREASE);
                         }
                     }
                     os.close();
-                } 
-                catch (Exception e) 
-                {
-                    
-                }
-                finally
-                {
+                } catch (Exception e) {
+
+                } finally {
                     dialog.CloseDialog();
                 }
             }
         });
     }
-    
-    public int CheckData(String dict, String name)
-    {
+
+    public int CheckData(String dict, String name) {
         File f;
         int version = 0;
-        
-        if ((new File(dict + name)).exists() == false) 
-        {            
+
+        if ((new File(dict + name)).exists() == false) {
             f = new File(dict);
 
-            if (!f.exists()) 
-            {
+            if (!f.exists()) {
                 f.mkdirs();
-            }            
+            }
             version = 0;
-        }
-        else
-        {
+        } else {
             SQLiteDatabase db = null;
-            Cursor cursor = null;                        
-            
-            try
-            {
+            Cursor cursor = null;
+
+            try {
                 db = DbConnection(dict + name);
-                
-                if(db != null)
-                {                    
-                    String sql = "select * from version";    
+
+                if (db != null) {
+                    String sql = "select * from version";
                     cursor = db.rawQuery(sql, null);
                     cursor.moveToFirst();
-                    
+
                     version = cursor.getInt(cursor.getColumnIndex("ver"));
                 }
-            } 
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 version = 0;
-            }
-            finally
-            {
-                if(cursor != null)
-                {
+            } finally {
+                if (cursor != null) {
                     cursor.close();
                 }
-                if(db != null)
-                {
+                if (db != null) {
                     db.close();
                 }
             }
         }
-        
-        return version;       
+
+        return version;
     }
-    
-    public void UpdateData(final String dict, final String name, final int ver)
-    {
+
+    public void UpdateData(final String dict, final String name, final int ver) {
         final ProgressShow dialog = new ProgressShow(
                 mContext, "请稍候", "数据库初始化中", ProgressShow.DIALOG_TYPE_SPINNER, ProgressShow.DIALOG_DEFAULT_MAX);
-        dialog.ShowDialog(new ProgressCallBack() 
-        {  
-            public void action() 
-            { 
-                switch (ver)
-                {
+        dialog.ShowDialog(new ProgressCallBack() {
+            public void action() {
+                switch (ver) {
                     case 0:
                         SQLiteDatabase db = null;
-                        
-                        try 
-                        {
+
+                        try {
                             db = DbConnection(dict + name);
-                            
-                            if(db != null)
-                            {                        
+
+                            if (db != null) {
                                 db.beginTransaction();
-                                
-                                String sql = "CREATE TABLE bookmark (_id integer NOT NULL PRIMARY KEY AUTOINCREMENT,"+
+
+                                String sql = "CREATE TABLE bookmark (_id integer NOT NULL PRIMARY KEY AUTOINCREMENT," +
                                         "updateTime datetime, book integer, chapter integer, section integer," +
                                         " title text, content text)";
                                 db.execSQL(sql);
-                                
+
                                 sql = "CREATE TABLE version (ver integer)";
                                 db.execSQL(sql);
                                 sql = "insert into version (ver) values (" + CommonPara.DB_DATA_VER + ")";
                                 db.execSQL(sql);
-                                
+
                                 sql = "CREATE TABLE verse (_id integer NOT NULL PRIMARY KEY AUTOINCREMENT, progress integer)";
-                                db.execSQL(sql);                
-                                for(int i=0;i<CommonPara.VERSE_NUMBER;i++)
-                                {
+                                db.execSQL(sql);
+                                for (int i = 0; i < CommonPara.VERSE_NUMBER; i++) {
                                     sql = "insert into verse (progress) values (0)";
                                     db.execSQL(sql);
                                 }
-                                
+
                                 db.setTransactionSuccessful();
                             }
-                            
-                        } 
-                        catch (Exception e) 
-                        {
-                            
-                        }
-                        finally
-                        {
+
+                        } catch (Exception e) {
+
+                        } finally {
                             db.endTransaction();
-        
-                            if(db != null)
-                            {
+
+                            if (db != null) {
                                 db.close();
                             }
-                            
+
                             dialog.CloseDialog();
                         }
                         break;
-            
+
                     default:
                         break;
                 }
             }
         });
     }
-    
-    public boolean CheckDatabase(String dict, String name, int ver)
-    {        
+
+    public boolean CheckDatabase(String dict, String name, int ver) {
         boolean isUpdated = false;
         File f;
-        
-        if ((new File(dict + name)).exists() == false) 
-        {            
+
+        if ((new File(dict + name)).exists() == false) {
             f = new File(dict);
 
-            if (!f.exists()) 
-            {
+            if (!f.exists()) {
                 f.mkdirs();
-            }         
-        }
-        else
-        {
+            }
+        } else {
             SQLiteDatabase db = null;
-            Cursor cursor = null;                            
-            
-            try
-            {
+            Cursor cursor = null;
+
+            try {
                 db = DbConnection(dict + name);
-                
-                if(db != null)
-                {
-                    String sql = "select * from version";    
+
+                if (db != null) {
+                    String sql = "select * from version";
                     cursor = db.rawQuery(sql, null);
                     cursor.moveToNext();
-                    
-                    if(cursor.getInt(cursor.getColumnIndex("ver")) == ver)
-                    {
+
+                    if (cursor.getInt(cursor.getColumnIndex("ver")) == ver) {
                         isUpdated = true;
                     }
-                }                
-            } 
-            catch (Exception e)
-            {
-                
-            }
-            finally
-            {
-                if(cursor != null)
-                {
+                }
+            } catch (Exception e) {
+
+            } finally {
+                if (cursor != null) {
                     cursor.close();
                 }
-                if(db != null)
-                {
+                if (db != null) {
                     db.close();
                 }
             }
         }
-        
-        if(isUpdated)
-        {
+
+        if (isUpdated) {
             return true;
-        }
-        else
-        {
+        } else {
             f = new File(dict + name);
             f.delete();
             return false;
         }
-            
+
     }
 }
